@@ -11,6 +11,36 @@ VANTA.NET({
     backgroundColor: 0x000000
 });
 
+function setupNavigation() {
+    const mobileToggle = document.querySelector('.section-mobile-toggle');
+    const sectionMenu = document.querySelector('.section-menu');
+
+    mobileToggle.addEventListener('click', () => {
+        mobileToggle.classList.toggle('section-mobile-toggle-active');
+        sectionMenu.classList.toggle('section-menu-active');
+    });
+
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll('.section-menu-item').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileToggle.classList.remove('section-mobile-toggle-active');
+            sectionMenu.classList.remove('section-menu-active');
+        });
+    });
+
+    // Add subtle scroll shadow to navigation
+    window.addEventListener('scroll', () => {
+        const sectionNavigation = document.querySelector('.section-navigation');
+        if (window.scrollY > 50) {
+            sectionNavigation.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+        } else {
+            sectionNavigation.style.boxShadow = 'none';
+        }
+    });
+}
+
+setupNavigation();
+
 document.addEventListener('DOMContentLoaded', () => {
     // Skill Card Toggle
     const skillCards = document.querySelectorAll('.skill-card');
