@@ -7,6 +7,128 @@ html {
     overflow-x: hidden;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.section-navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.section-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-branding {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 123, 255, 0.7);
+}
+
+.section-menu {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.section-menu-item {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.section-menu-item::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #007bff;
+    transition: width 0.3s ease;
+}
+
+.section-menu-item:hover::after {
+    width: 100%;
+}
+
+.section-menu-item:hover {
+    color: #007bff;
+}
+
+.section-mobile-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.section-mobile-toggle-bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+    transition: 0.4s;
+}
+
+@media screen and (max-width: 768px) {
+    .section-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.9);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    .section-menu.section-menu-active {
+        left: 0;
+    }
+
+    .section-menu-item {
+        margin: 1rem 0;
+    }
+
+    .section-mobile-toggle {
+        display: flex;
+    }
+
+    .section-mobile-toggle.section-mobile-toggle-active .section-mobile-toggle-bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .section-mobile-toggle.section-mobile-toggle-active .section-mobile-toggle-bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .section-mobile-toggle.section-mobile-toggle-active .section-mobile-toggle-bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
         
 body, html {
